@@ -40,3 +40,4 @@ const city=await this.cityRepository.createCity(data);
         } 
     }
 }
+module.exports=CityService;
