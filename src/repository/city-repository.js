@@ -26,10 +26,16 @@ class CityRepository {
 
   async updateCity(cityId, data) {
     try {
-      const [updatedRows] = await City.update(data, {
-        where: { id: cityId },
-      });
-      return updatedRows > 0; // Return true if updated, false otherwise
+      //this will also work but will not return updated object 
+      // const [updatedRows] = await City.update(data, {
+      //   where: { id: cityId },
+      // });
+      // return updatedRows > 0; 
+      // // Return true if updated, false otherwise
+      const city=await City.findByPk(cityId);
+      city.name=data.name;
+      await city.save();
+      return city;
     } catch (error) {
       console.error('Something went wrong in city repo:', error.message);
       throw new Error('Database Error: Unable to update city');
