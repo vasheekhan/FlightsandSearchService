@@ -8,8 +8,9 @@ this.cityRepository=new CityRepository();
 const city=await this.cityRepository.createCity(data);
             return city;
         } catch (error) {
-            console.log("Something went wrong in city repo");
-            throw {error}   
+            console.log("Error in City Service:", error);
+            console.log(error.message)
+      throw new Error(error.message || "Service error while creating city");  
         }
     }
     async deleteCity(cityId){
