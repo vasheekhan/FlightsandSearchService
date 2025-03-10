@@ -40,7 +40,6 @@ const destroy = async (req, res) => {
     });
   }
 };
-
 const get = async (req, res) => {
   try {
     const response = await cityService.getCity(req.params.id);
@@ -81,7 +80,7 @@ const update = async (req, res) => {
 };
 const getAll=async(req,res)=>{
   try {
-    const cities=await cityService.getAllCities();
+    const cities=await cityService.getAllCities(req.query);
     return res.status(201).json({
       data: cities,
       success: true,

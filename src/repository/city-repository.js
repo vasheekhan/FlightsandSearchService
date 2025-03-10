@@ -1,5 +1,5 @@
 const db = require('../models'); // No need for '/index.js', Node picks it automatically
-
+const {Op}=require("sequelize")
 const City = db.City; // ✅ Use PascalCase 'City', not 'city'
 
 class CityRepository {
@@ -23,8 +23,18 @@ class CityRepository {
       throw new Error('Database Error: Unable to delete city');
     }
   }
-  async getAllCities(){
+  async getAllCities(filter){
     try {
+      if(filter.name){
+        const cities=await City.findAll({
+          where:{
+            name:{
+             [Op.startsWith]:filter.name
+            }
+          }
+        })
+        return cities;
+      }
       const cities=await City.findAll();
       return cities;
       
