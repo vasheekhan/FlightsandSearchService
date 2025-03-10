@@ -23,6 +23,16 @@ class CityRepository {
       throw new Error('Database Error: Unable to delete city');
     }
   }
+  async getAllCities(){
+    try {
+      const cities=await City.findAll();
+      return cities;
+      
+    } catch (error) {
+      console.error('Something went wrong in city repo:', error.message);
+      throw new Error('Database Error: Unable to update city');
+    }
+  }
 
   async updateCity(cityId, data) {
     try {

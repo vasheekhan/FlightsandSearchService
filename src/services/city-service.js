@@ -31,6 +31,15 @@ const city=await this.cityRepository.createCity(data);
             throw {error}  
         }  
     }
+    async getAllCities(){
+        try {
+            const cities=await this.cityRepository.getAllCities();
+            return cities;
+        } catch (error) {
+            console.log("Something went wrong in city repo");
+            throw error   
+        }
+    }
     async getCity(cityId){
         try {
            const city=await this.cityRepository.getCity(cityId) 
