@@ -13,6 +13,15 @@ const city=await this.cityRepository.createCity(data);
       throw new Error(error.message || "Service error while creating city");  
         }
     }
+    async addMultipleCity(multiplecity) {
+        try {
+          const result = await this.cityRepository.AddMultipleCity(multiplecity);
+         return result;
+        } catch (error) {
+          console.error('Something went wrong in city repo:', error.message);
+          throw new Error('Database Error: Unable to delete city');
+        }
+      }
     async deleteCity(cityId){
         try {
            const response=this.cityRepository.deleteCity(cityId) 

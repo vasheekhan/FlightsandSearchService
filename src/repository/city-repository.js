@@ -11,18 +11,16 @@ class CityRepository {
       throw new Error('Database Error: Unable to create city');
     }
   }
-
-  async deleteCity(cityId) {
+  async AddMultipleCity(multiplecity) {
     try {
-      const result = await City.destroy({
-        where: { id: cityId },
-      });
-      return result > 0; // Return true if deleted, false otherwise
+        const result = await City.bulkCreate(multiplecity, { ignoreDuplicates: true }); // ✅ Prevent duplicate errors
+        return result;
     } catch (error) {
-      console.error('Something went wrong in city repo:', error.message);
-      throw new Error('Database Error: Unable to delete city');
+        console.error('Something went wrong in city repo:', error.message);
+        throw new Error('Database Error: Unable to add cities'); // ✅ Fix error message
     }
-  }
+}
+
   async getAllCities(filter){
     try {
       if(filter.name){
