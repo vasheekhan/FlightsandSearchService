@@ -25,3 +25,10 @@ static associate(models) {
           as:"cityId"
         },
 then you have to make changes in the migration file as you have to add the references for that
+
+
+🧑‍💻 how to create a model
+ npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:integer 
+
+ 🧑‍💻for seeding
+ npx sequelize db:seed:all

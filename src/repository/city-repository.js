@@ -1,6 +1,6 @@
-const db = require('../models'); // No need for '/index.js', Node picks it automatically
+const db = require('../models'); 
 const {Op}=require("sequelize")
-const City = db.City; // ✅ Use PascalCase 'City', not 'city'
+const City = db.City;
 
 class CityRepository {
   async createCity({ name }) {
@@ -70,4 +70,4 @@ class CityRepository {
   }
 }
 
-module.exports = CityRepository; // ✅ Capitalized class name
+module.exports = CityRepository; 
