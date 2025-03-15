@@ -38,6 +38,25 @@ class FlightService {
             throw error;
         }
     }
+    async getFlight(data){
+        try {
+           const flight=await this.FlightRepository.getFlight(data);
+           return flight; 
+        } catch (error) {
+            console.error("Error in FlightService.getFlight:", error.message);
+            throw error;  
+        }
+    }
+    async getAllFlight(data){
+        try {
+           const flight=await this.FlightRepository.getAllFlight(data);
+           return flight; 
+        } catch (error) {
+            console.error("Error in FlightService.getAllFlight:", error.message);
+            throw error;  
+        }
+    }
+
 }
 
 module.exports = FlightService;

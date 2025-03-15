@@ -9,4 +9,6 @@ router.get("/city",CityController.getAll)
 router.patch("/city/:id",CityController.update)
 router.post("/createMultipleCities",CityController.createCities)
 router.post("/createflight",FlightController.create);
+router.get("/getflight",FlightController.getFlight);
+router.get("/getAllFlight",FlightController.getAllFlight);
 module.exports=router
