@@ -30,8 +30,10 @@ const create=async(req,res)=>{
     }
 }
 const getFlight=async(req,res)=>{
+  console.log("hii");
   try {
-    const flight =await flightService.getFlight(req.body);
+    console.log(req.params.id);
+    const flight =await flightService.getFlight(req.params.id);
     return res.status(SuccessCodes.OK).json({
       data:flight,
       success:true,
