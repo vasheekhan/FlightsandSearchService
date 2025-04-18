@@ -34,9 +34,7 @@ class FlightRepository {
     }
     async getFlight(data){
         try {
-            console.log("data",data);
             const flight = await flights.findByPk(data);
-            console.log("flights",flight)
             return flight;
         } catch (error) {
             console.log("Something went wrong in the flight repository");
@@ -58,6 +56,20 @@ class FlightRepository {
             throw error; 
         }
     }
-}
+    async updateFlight(flightId,data){
+        try {
+            await flights.update(data,{
+             where:{
+                 id:flightId
+             }
+            }) 
+            return true;
+         } catch (error) {
+           console.log("something went wrong in the repository layer");
+           throw {error};
+         }
+         }
+    }
+
 
 module.exports = FlightRepository;
